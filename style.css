@@ -1,0 +1,187 @@
+*{
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+:root{
+    --dark-blue:#00203FFF;
+    --light-skyblue:#ADEFD1FF;
+}
+body{
+    max-width: 1400px;
+    margin:0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+Header{
+    padding: 2rem 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly;
+    background-color: #00203FFF;
+    color:#ADEFD1FF;
+    /* color: #fff; */
+
+}
+header > h1{
+    font-size: 50px;
+    /* color:#00203FFF; */
+    color:#ADEFD1FF;
+}
+header > table{
+    width: 20px;
+    border-collapse: collapse;
+
+}
+header > table th{
+    border: 1px solid #ADEFD1FF;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+    padding: .2rem;
+    font-weight: 600;
+
+}
+header > table td{
+    border: 1px solid rgb(14, 88, 55);
+    font-size: 13px;
+
+}
+
+/* Section */
+section{
+    padding: 2rem 1rem;
+    /* background-color: #00203FFF;
+    color:#ADEFD1FF; */
+    background-color:#ADEFD1FF;
+
+}
+section form{
+    margin-bottom: 2rem;
+}
+section > form input{
+    width: 100%;
+    padding: .3rem .4rem;
+    font-size: 15px;
+    margin-top: .2rem;
+}
+section > form .student-name{
+    width: 50%;
+    display: block;
+}
+section > form label{
+    color: var(--dark-blue);
+    font-size: 16px;
+    font-weight: 510;
+}
+section > form div.subject-input{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:1rem;
+    margin: 1rem 0;
+}
+
+
+.btn {
+	outline: 0;
+	border: 0;
+	padding: .5rem 1.5rem;
+	font-size: 16px;
+	cursor: pointer;
+    border-radius: 42px;
+    transition: .5s all ease;
+    
+
+}
+.btn:hover{
+    background-color: var(--dark-blue);
+    transition: .5s all ease;
+}
+.btn-info{
+    background-color: green;
+    color: #fff;
+
+}
+.btn-alert{
+    background-color: rgb(0, 183, 255);
+    color: #fff;
+}
+.btn-danger{
+    background-color: red;
+    color: #fff;
+}
+
+/* Error */
+#error {
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+/* Output Table */
+section table{
+    text-align: center;
+    border-collapse: collapse;
+   
+}
+
+
+section table.output-table th{
+    color: var(--dark-blue);
+    font-size: 16px;
+    font-weight: 510;
+    border: 1px solid var(--dark-blue);
+    padding: .1rem .2rem;
+   
+
+    
+}
+section table.output-table  tr td{
+    border: 1px solid var(--dark-blue);
+    padding: .1rem .2rem;
+}
+
+
+/* Footer */
+/* ------------------- */
+footer{
+    margin: 2rem 0;
+    /* margin-left: 1rem; */
+    color: var(--dark-blue);
+    text-align: center;
+}
+
+/* Media Quaries */
+@media screen and (max-width:660px) {
+    header h1{
+        font-size: 40px
+    }
+    section > form div.subject-input{
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}
+
+@media screen and (max-width:460px) {
+    header{
+        flex-direction: column;
+    }
+
+    header > table{
+        margin-top: 1rem;
+        align-self:flex-end;
+    }
+    header h1{
+        font-size: 30px
+    }
+
+    section > form .student-name{
+        width: 100%;
+    }
+    section > form div.subject-input{
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet</title>
+    <link rel="shortcut icon" href="./Image/Favicon/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <Header>
+        <h1 class="">Application Dashboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Point</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>80 - 90</td>
+                    <td>5.00</td>
+                    <td>A+</td>
+                </tr>
+                <tr>
+                    <td>70 - 79</td>
+                    <td>4.00</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td>60 - 69</td>
+                    <td>3.5</td>
+                    <td>A-</td>
+                </tr>
+                <tr>
+                    <td>50 - 59</td>
+                    <td>3.00</td>
+                    <td>B</td>
+                </tr>
+                <tr>
+                    <td>40 - 49</td>
+                    <td>2.00</td>
+                    <td>C</td>
+                </tr>
+                <tr>
+                    <td>0 - 39</td>
+                    <td>0.00</td>
+                    <td>F</td>
+                </tr>
+            </tbody>
+        </table>
+    </Header>
+    <section>
+        <form class="input-form">
+            <div class="input-group">
+                <label for="inputName">Student Name</label>
+                <input required type="text" class="student-name" id="inputName" placeholder="Ex: Jonh Doe">
+            </div>
+            <div class="subject-input">
+                <div class="input-group">
+                    <label for="inputBanglaNum">Bangla</label>
+                    <input required type="number" id="inputBanglaNum" placeholder="Ex: 80">
+                </div>
+                <div class="input-group">
+                    <label for="inputEnglishNum">English</label>
+                    <input required type="number" id="inputEnglishNum" placeholder="Ex: 70">
+                </div>
+                <div class="input-group">
+                    <label for="inputMathNum">Mathematics</label>
+                    <input required type="number" id="inputMathNum" placeholder="Ex 88">
+                </div>
+                <div class="input-group">
+                    <label for="inputSocialScienceNum">Social Science</label>
+                    <input required type="number" id="inputSocialScienceNum" placeholder="Ex: 76">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <button class="btn btn-info" type="submit" id="btn">Add</button>
+                <button class="btn btn-alert" type="reset">Add New</button>
+                <button class="btn btn-danger" id="reload">Reload</button>
+            </div>
+
+        </form>
+        <div class="errorMessage">
+            <h4 id="error"></h4>
+        </div>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Bangla Number</th>
+                    <th>English Number</th>
+                    <th>Math Number</th>
+                    <th>Social Science Number</th>
+                    <th>Grad Point</th>
+                    <th>Grade Name</th>
+                    <th>Total Number</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+        <!-- <div class="output-message-box">
+            <h4 id="message"></h4>
+        </div> -->
+    </section>
+
+    <footer>
+        &copy; All Rights Reserved Mohammed Shiam
+    </footer>
+    <!-- Script -->
+    <script>
+        // Selection
+        const name = document.getElementById('inputName');
+        const inputBanglaNum = document.getElementById('inputBanglaNum');
+        const inputEnglishNum = document.getElementById('inputEnglishNum');
+        const inputMathNum = document.getElementById('inputMathNum');
+        const inputSocialScienceNum = document.getElementById('inputSocialScienceNum');
+        const btn = document.getElementById('btn')
+        const tbody = document.getElementById('tbody')
+        const newOne = document.getElementById('reload');
+        const error = document.getElementById('error')
+        const message = document.getElementById('message')
+        // Point of evry Subjects
+        let bangla;
+        let english;
+        let math;
+        let socialScience;
+        var point;
+
+        newOne.addEventListener('click', (e) => {
+            location.reload()
+        })
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            creatElement()
+
+
+        })
+
+        const creatElement = () => {
+
+
+            // Calculation
+            if (name.value == '' || inputBanglaNum.value == '' || inputEnglishNum.value == '' ||
+                inputMathNum.value == '' || inputSocialScienceNum.value == '') {
+                error.innerText = 'Invalid Credential'
+                error.style.color = 'red'
+            } else {
+                error.innerText = ''
+                // creatAndAppend()
+                const tr = document.createElement('tr')
+                const td1 = document.createElement('td')
+                const td2 = document.createElement('td')
+                const td3 = document.createElement('td')
+                const td4 = document.createElement('td')
+                const td5 = document.createElement('td')
+                const td6 = document.createElement('td')
+                const td7 = document.createElement('td')
+                const td8 = document.createElement('td')
+                tbody.appendChild(tr)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tr.appendChild(td6);
+                tr.appendChild(td7)
+                tr.appendChild(td8)
+                // Calculation
+                td1.innerHTML = name.value;
+                td2.innerHTML = inputBanglaNum.value;
+                td3.innerHTML = inputEnglishNum.value;
+                td4.innerHTML = inputMathNum.value;
+                td5.innerHTML = inputSocialScienceNum.value
+                gradPoint(td6);
+                gradName(td7);
+                td8.innerHTML = Number(inputBanglaNum.value) + Number(inputEnglishNum.value) + Number(
+                    inputMathNum.value) + Number(inputSocialScienceNum.value) + Number(
+                    inputSocialScienceNum.value)
+            }
+
+        }
+
+        const gradPoint = (td6) => {
+
+            // Bangla
+            if (Number(inputBanglaNum.value) >= 80) {
+                bangla = 5;
+            } else if (Number(inputBanglaNum.value) >= 70) {
+                bangla = 4
+            } else if (Number(inputBanglaNum.value) >= 60) {
+                bangla = 3.5
+            } else if (Number(inputBanglaNum.value) >= 50) {
+                bangla = 3
+            } else if (Number(inputBanglaNum.value) >= 40) {
+                bangla = 2
+            } else {
+                bangla = 0;
+            }
+            // English
+            if (Number(inputEnglishNum.value) >= 80) {
+                english = 5;
+            } else if (Number(inputEnglishNum.value) >= 70) {
+                english = 4
+            } else if (Number(inputEnglishNum.value) >= 60) {
+                english = 3.5
+            } else if (Number(inputEnglishNum.value) >= 50) {
+                english = 3
+            } else if (Number(inputEnglishNum.value) >= 40) {
+                english = 2
+            } else {
+                english = 0;
+            }
+            // Math
+            if (Number(inputMathNum.value) >= 80) {
+                math = 5;
+            } else if (Number(inputMathNum.value) >= 70) {
+                math = 4
+            } else if (Number(inputMathNum.value) >= 60) {
+                math = 3.5
+            } else if (Number(inputMathNum.value) >= 50) {
+                math = 3
+            } else if (Number(inputMathNum.value) >= 40) {
+                math = 2
+            } else {
+                math = 0;
+            }
+
+            // Math
+            if (Number(inputSocialScienceNum.value) >= 80) {
+                socialScience = 5;
+            } else if (Number(inputSocialScienceNum.value) >= 70) {
+                socialScience = 4
+            } else if (Number(inputSocialScienceNum.value) >= 60) {
+                socialScience = 3.5
+            } else if (Number(inputSocialScienceNum.value) >= 50) {
+                socialScience = 3
+            } else if (Number(inputSocialScienceNum.value) >= 40) {
+                socialScience = 2
+            } else {
+                socialScience = 0
+            }
+
+            if (bangla == 0 || english == 0 || math == 0 || socialScience == 0) {
+                td6.innerHTML = '0.00'
+                td6.style.color = 'red'
+            } else {
+                point = (bangla + english + math + socialScience) / 4;
+                td6.innerHTML = point == 5 ? `${point}.00` : point;
+                td6.innerHTML = point == 4 ? `${point}.00` : point;
+                td6.innerHTML = point == 3 ? `${point}.00` : point;
+                td6.innerHTML = point == 2 ? `${point}.00` : point;
+            }
+        }
+        const gradName = (td7) => {
+            let pointOne
+            let grad;
+            if (bangla == 0 || english == 0 || math == 0 || socialScience == 0) {
+                pointOne = 0
+            } else {
+                pointOne = (bangla + english + math + socialScience) / 4;
+            }
+
+            if (point == 5) {
+                grad = 'A+'
+            } else if (point >= 4) {
+                grad = 'A';
+            } else if (point >= 3.5) {
+                grad = 'A-'
+            } else if (point >= 3) {
+                grad = 'B'
+            } else if (point >= 2) {
+                grad = 'C'
+            }
+            if (pointOne == 0) {
+                td7.innerHTML = 'F'
+            } else {
+                td7.innerHTML = grad;
+            }
+
+        }
+    </script>
+
+
+</body>
+
+</html>
