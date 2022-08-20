@@ -18,26 +18,32 @@ body{
 Header{
     padding: 2rem 1rem;
     text-align: center;
-    display: flex;
-    align-items: center;
-    /* flex-wrap: wrap; */
-    justify-content: space-evenly;
     background-color: #00203FFF;
     color:#ADEFD1FF;
     /* color: #fff; */
 
 }
-header > h1{
-    font-size: 50px;
-    /* color:#00203FFF; */
-    color:#ADEFD1FF;
+header h1.head{
+    text-align: left;
+    font-size: 60px;
+    margin-bottom: 1rem;
+    /* color: ; */
 }
-header > table{
+header div.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+header div.content h1{
+    color: rgb(86, 196, 146);
+}
+header div.content table{
     width: 20px;
     border-collapse: collapse;
 
 }
-header > table th{
+header div.content table th{
     border: 1px solid #ADEFD1FF;
     font-size: 14px;
     background-color: #fff;
@@ -46,7 +52,7 @@ header > table th{
     font-weight: 600;
 
 }
-header > table td{
+header div.content table td{
     border: 1px solid rgb(14, 88, 55);
     font-size: 13px;
 
@@ -156,8 +162,8 @@ footer{
 
 /* Media Quaries */
 @media screen and (max-width:660px) {
-    header h1{
-        font-size: 40px
+    header h1.head{
+        font-size: 43px
     }
     section > form div.subject-input{
         grid-template-columns: 1fr 1fr;
@@ -166,17 +172,17 @@ footer{
 }
 
 @media screen and (max-width:460px) {
-    header{
+    header div.content{
         flex-direction: column;
     }
-
-    header > table{
+    header div.content h1{
+        align-self: flex-start;
+      }
+    header div.content table{
         margin-top: 1rem;
         align-self:flex-end;
     }
-    header h1{
-        font-size: 30px
-    }
+   
 
     section > form .student-name{
         width: 100%;
